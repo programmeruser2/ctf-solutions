@@ -1,3 +1,4 @@
+# Renamed to rename-chall to avoid naming conflicts with the Pythobuiltin random library.
 from pwn import *
 s = ssh(host='pwnable.kr', port=2222, user='random', password='guest')
 p = s.process('./random')
