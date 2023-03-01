@@ -1,5 +1,10 @@
 import os
 import sys
+# Requires you to have flask-session-cookie-manager installed:
+# https://github.com/noraj/flask-session-cookie-manager
+# Can be installed with: pip install flask-session-cookie-manager
+# or with any other package manager that can pull from PyPI.
+# Alternatively, if you have BlackArch, it's in the repos there.
 cookie_names = ["snickerdoodle", "chocolate chip", "oatmeal raisin", "gingersnap", "shortbread", "peanut butter", "whoopie pie", "sugar", "molasses", "kiss", "biscotti", "butter", "spritz", "snowball", "drop", "thumbprint", "pinwheel", "wafer", "macaroon", "fortune", "crinkle", "icebox", "gingerbread", "tassie", "lebkuchen", "macaron", "black and white", "white chocolate macadamia"]
 val = 'eyJ2ZXJ5X2F1dGgiOiJibGFuayJ9.Y_-_eQ.dyLAww65rvK_LrSuMbJDksBGeHU'
 secret = None
