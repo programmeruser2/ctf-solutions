@@ -36,7 +36,7 @@ client.on("messageCreate", async (msg) => {
   }
 });
 ```
-At first, I tried manually composing responses, but I realized that ChatGPT's definition of "helpful" was ambiguous. 
+At first, I tried manually composing responses, but I realized that the bot's definition of "helpful" was ambiguous. It was difficult to consistently compose "helpful" messages because I was dealing with an unknown black-box function for checking the text and because of the randomness of the LLM model.
 
 Then I realized that if I used a GPT model to write questions and responses, I would probably have a high probability of getting rated because the standards that ChatGPT rates responses by is probably the same as the ones that it uses to write "helpful responses". Basically, I dogfooded text from ChatGPT back into the conversation.
 
