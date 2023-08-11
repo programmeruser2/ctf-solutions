@@ -43,8 +43,9 @@ Then I realized that if I used a GPT model to write questions and responses, I w
 So then I got one of my teams members to help me simulate a two-sided conversation. I would create some question for ChatGPT to answer (the process was greatly assisted by [Poe.com](https://poe.com)'s suggestions feature), and I would send it to my team members. Then, they would send it in the Discord channel and I replied to it.
 
 Here's an example of it:
-> MoonCaller27: Which subreddit would you recommend for networking with professionals in cybersecuri?
-> programmer_user: For networking with professionals in cybersecurity, I would recommend the following subreddit:
+> **MoonCaller27**: Which subreddit would you recommend for networking with professionals in cybersecuri?
+
+> **programmer_user**: For networking with professionals in cybersecurity, I would recommend the following subreddit:
 >
 > r/cybersecurity: This subreddit is specifically dedicated to cybersecurity topics. It's a community where professionals, enthusiasts, and students gather to discuss various aspects of cybersecurity, share news and resources, and engage in discussions about careers in the field. It's an excellent place to network with cybersecurity professionals and learn from their experiences.
 >Additionally, here are a few more subreddits that can be valuable for networking and discussions related to cybersecurity:
