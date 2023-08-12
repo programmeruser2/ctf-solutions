@@ -15,10 +15,10 @@ Then it was just a matter of plugging in $x=5$, and I had the value of the quest
 [![Wolfram Alpha evaluating the polynomial at x=5](wolfram3.png)](https://www.wolframalpha.com/input?i=evaluate+%281675398582786350922949773+x%5E3%29%2F2+-+6666226692993271543000894+x%5E2+%2B+%2831479839938810680242729507+x%29%2F2+-+9801386397792183631706842+at+x%3D5)
 So to briefly summarize, we have that:
 $$\begin{cases}
-a = 110006170013060408131904
-b = 1715141100190814130818181
-c = 40214141100130305201308
-d = 111421041100061700130604
+a = 110006170013060408131904 \\
+b = 1715141100190814130818181 \\ 
+c = 40214141100130305201308 \\
+d = 111421041100061700130604 \\
 e = 6954957548549661084455388
 \end{cases}$$
 (I'm writing $e$ for the question mark and using the same letters for the fruits as I did before.)
@@ -30,7 +30,7 @@ Now our final task is figuring out how to convert this to letters. Thankfully, t
 
 > **A**: that’s because you need to cut those into singles
 
-I inferred that "pairs" probably meant groups of 2 letters. Indeed, if you do this and split everything into pairs of 2, all of the pairs will form a number between 0 and 25, which is very likely referring to different letters of the alphabet. (Some numbers have an odd number of digits, but adding $0$ s to either the front or back seems to fix it).
+I inferred that "pairs" probably meant groups of 2 letters. Indeed, if you do this and split everything into pairs of 2, all of the pairs will form a number between 0 and 25, which is very likely referring to different letters of the alphabet. (Some numbers have an odd number of digits, but adding zeroes to either the front or back seems to fix it).
 
 This clearly doesn't work for $e$, but the messages also tells us that they need to be in "singles". Given that the fruits decoded to indices of the alphabet, I assumed that it was true for the question mark too.
 
