@@ -30,7 +30,7 @@ Now our final task is figuring out how to convert this to letters. Thankfully, t
 
 > **A**: that’s because you need to cut those into singles
 
-I inferred that "pairs" probably meant groups of 2 letters. Indeed, if you do this and split everything into pairs of 2, all of the pairs will form a number between 0 and 25, which is very likely referring to different letters of the alphabet. (Some numbers have an odd number of digits, but adding $0$s to either the front or back seems to fix it).
+I inferred that "pairs" probably meant groups of 2 letters. Indeed, if you do this and split everything into pairs of 2, all of the pairs will form a number between 0 and 25, which is very likely referring to different letters of the alphabet. (Some numbers have an odd number of digits, but adding $0$ s to either the front or back seems to fix it).
 
 This clearly doesn't work for $e$, but the messages also tells us that they need to be in "singles". Given that the fruits decoded to indices of the alphabet, I assumed that it was true for the question mark too.
 
