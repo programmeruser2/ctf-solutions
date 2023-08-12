@@ -14,13 +14,15 @@ There's a method of interpolation called Lagrange Interpolation which gives a po
 Then it was just a matter of plugging in $x=5$, and I had the value of the question mark!
 [![Wolfram Alpha evaluating the polynomial at x=5](wolfram3.png)](https://www.wolframalpha.com/input?i=evaluate+%281675398582786350922949773+x%5E3%29%2F2+-+6666226692993271543000894+x%5E2+%2B+%2831479839938810680242729507+x%29%2F2+-+9801386397792183631706842+at+x%3D5)
 So to briefly summarize, we have that:
-$$\begin{cases}
+```math
+\begin{cases}
 a = 110006170013060408131904 \\
 b = 1715141100190814130818181 \\ 
 c = 40214141100130305201308 \\
 d = 111421041100061700130604 \\
 e = 6954957548549661084455388
-\end{cases}$$
+\end{cases}
+```
 (I'm writing $e$ for the question mark and using the same letters for the fruits as I did before.)
 
 Now our final task is figuring out how to convert this to letters. Thankfully, the messages give us a small hint:
