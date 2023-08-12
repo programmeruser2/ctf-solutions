@@ -31,38 +31,24 @@ e = 6954957548549661084455388
 ```
 (I'm writing $e$ for the question mark and using the same letters for the fruits as I did before.)
 
-Now our final task is figuring out how to convert this to letters. Thankfully, the messages give us a small hint:
+Now our final task is figuring out how to convert this to letters. Apparently, we have to combine them as strings, so I just concatenated them together to get `1100061700130604081319041715141100190814130818181402141411001303052013081114210411000617001306046954957548549661084455388`. But how do we convert this into the flag? Thankfully, the messages give us a small hint:
 > **A**: hint: you need to cut the fruits into pairs to get letters 😱
 
 > **B**: but that doesn’t work for the question mark 😭
 
 > **A**: that’s because you need to cut those into singles
 
-I inferred that "pairs" probably meant groups of 2 letters. Indeed, if you do this and split everything into pairs of 2, all of the pairs will form a number between 0 and 25, which is very likely referring to different letters of the alphabet. (Some numbers have an odd number of digits, but adding zeroes to either the front or back seems to fix it).
+I inferred that "pairs" probably meant groups of 2 letters. Indeed, if you do this and split everything into pairs of 2, all of the pairs will form a number between 0 and 25, which is very likely referring to different letters of the alphabet. 
 
 This clearly doesn't work for $e$, but the messages also tells us that they need to be in "singles". Given that the fruits decoded to indices of the alphabet, I assumed that it was true for the question mark too.
 
 I then wrote a quick decryption script that just looped through and decoded the flag:
 ```python3
-fruits = [
-    '110006170013060408131904',
-    '1715141100190814130818181',
-    '40214141100130305201308',
-    '111421041100061700130604'
-]
+fruits = '110006170013060408131904171514110019081413081818140214141100130305201308111421041100061700130604'
 flag = 'LITCTF{'
 
-for fruit in fruits:
-    n = fruit 
-    if len(n) % 2 != 0:
-        # check which side needs padding with zeroes, and add if needed
-        v = int(n[0] + n[1])
-        if v <= 25:
-            n += '0'
-        else:
-            n = '0' + n
-    for i in range(0, len(n), 2):
-        flag += chr(ord('a') + int(n[i] + n[i+1]))
+for i in range(0, len(fruits), 2):
+    flag += chr(ord('a') + int(fruits[i] + fruits[i+1]))
 
 question = '6954957548549661084455388'
 for d in question:
@@ -72,5 +58,5 @@ flag += '}'
 print(flag)
 ```
 
-Finally, we get the flag after all this work: `LITCTF{lagrangeinterpolationisskecoolandfunilovelagrangegjfejfhfeifejggbaieeffdii}`.
+Finally, we get the flag after all this work: `LITCTF{lagrangeinterpolationissocoolandfunilovelagrangegjfejfhfeifejggbaieeffdii}`.
 
