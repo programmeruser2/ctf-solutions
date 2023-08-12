@@ -18,6 +18,7 @@ There's a method of interpolation called Lagrange Interpolation which gives a po
 Then it was just a matter of plugging in $x=5$, and I had the value of the question mark!
 
 [![Wolfram Alpha evaluating the polynomial at x=5](https://github.com/programmeruser2/ctf-solutions/blob/main/litctf/2023/lagrange/wolfram3.png?raw=true)](https://www.wolframalpha.com/input?i=evaluate+%281675398582786350922949773+x%5E3%29%2F2+-+6666226692993271543000894+x%5E2+%2B+%2831479839938810680242729507+x%29%2F2+-+9801386397792183631706842+at+x%3D5)
+
 So to briefly summarize, we have that:
 ```math
 \begin{cases}
