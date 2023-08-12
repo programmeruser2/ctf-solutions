@@ -8,21 +8,21 @@ Going step by step, I solved the system first, since it was the first thing that
 [![Wolfram Alpha solving the system of equations from the PDF](wolfram1.png)](https://www.wolframalpha.com/input?i=solve+the+system+of+equations+a%2Bb%3D1825147270203874538950085%2C+b%2Bc%3D1755355241290944436019489%2C+a%2Bc%3D150220311113190713333212%2C+b%2Bd%3D1826562141290875830948785https://www.wolframalpha.com/input?i=solve+the+system+of+equations+a%2Bb%3D1825147270203874538950085%2C+b%2Bc%3D1755355241290944436019489%2C+a%2Bc%3D150220311113190713333212%2C+b%2Bd%3D1826562141290875830948785)
 
 Next, we need to figure out how we're going to find out the value of ?. It's not part of the system of equations, but the question mark is referenced as the output of $f(5)$. So we need a function that fits the first 4 outputs, and we could use that to figure out the 5th one (i.e. interpolate it).
+
 There's a method of interpolation called Lagrange Interpolation which gives a polynomial that fits an arbitrary amount of points which I found out about. It's probably what's hinted at by the title ("are you smarter than joseph-louis lagrange????"), so I used Wolfram Alpha to apply it and find $f$:
 [![Wolfram Alpha doing the Lagrange interpolation]](https://www.wolframalpha.com/input?i=lagrange+interpolation+with+points+%281%2C+110006170013060408131904%29%2C+%282%2C+1715141100190814130818181%29%2C+%283%2C+40214141100130305201308%29%2C+%284%2C+111421041100061700130604%29)
 Then it was just a matter of plugging in $x=5$, and I had the value of the question mark!
 [![Wolfram Alpha evaluating the polynomial at x=5](wolfram3.png)](https://www.wolframalpha.com/input?i=evaluate+%281675398582786350922949773+x%5E3%29%2F2+-+6666226692993271543000894+x%5E2+%2B+%2831479839938810680242729507+x%29%2F2+-+9801386397792183631706842+at+x%3D5)
 So to briefly summarize, we have that:
-$$
-\begin{cases}
+$$\begin{cases}
 a = 110006170013060408131904
 b = 1715141100190814130818181
 c = 40214141100130305201308
 d = 111421041100061700130604
 e = 6954957548549661084455388
-\end{cases}
-$$
+\end{cases}$$
 (I'm writing $e$ for the question mark and using the same letters for the fruits as I did before.)
+
 Now our final task is figuring out how to convert this to letters. Thankfully, the messages give us a small hint:
 > **A**: hint: you need to cut the fruits into pairs to get letters 😱
 
