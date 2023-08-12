@@ -10,6 +10,7 @@ Going step by step, I solved the system first, since it was the first thing that
 Next, we need to figure out how we're going to find out the value of ?. It's not part of the system of equations, but the question mark is referenced as the output of $f(5)$. So we need a function that fits the first 4 outputs, and we could use that to figure out the 5th one (i.e. interpolate it).
 
 There's a method of interpolation called Lagrange Interpolation which gives a polynomial that fits an arbitrary amount of points which I found out about. It's probably what's hinted at by the title ("are you smarter than joseph-louis lagrange????"), so I used Wolfram Alpha to apply it and find $f$:
+<img src="./wolfram1.png" alt="my alt"/>
 [<img src="./wolfram1.png" alt="Wolfram Alpha doing the Lagrange interpolation"/>](https://www.wolframalpha.com/input?i=lagrange+interpolation+with+points+%281%2C+110006170013060408131904%29%2C+%282%2C+1715141100190814130818181%29%2C+%283%2C+40214141100130305201308%29%2C+%284%2C+111421041100061700130604%29)
 Then it was just a matter of plugging in $x=5$, and I had the value of the question mark!
 [![Wolfram Alpha evaluating the polynomial at x=5](./wolfram3.png)](https://www.wolframalpha.com/input?i=evaluate+%281675398582786350922949773+x%5E3%29%2F2+-+6666226692993271543000894+x%5E2+%2B+%2831479839938810680242729507+x%29%2F2+-+9801386397792183631706842+at+x%3D5)
