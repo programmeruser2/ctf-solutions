@@ -58,6 +58,6 @@ flag = leakstr('flag', flaglen)
 print(flag)
 # LITCTF{c4refu1_fr}
 ```
-...and after some waiting, we finally get the flag!
+
 
 
