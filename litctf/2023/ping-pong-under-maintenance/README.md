@@ -1,7 +1,7 @@
 # web/Ping Pong: Under Maintenance
 So in this challenge we see that we have a command injection vulnerability that we can exploit similarly to the one in the previous challenge. However, instead of just adding a semicolon to start a new command and then `cat`ing the flag, we can't see the output.
 
-I then tried just using a command to put the flag text into `templates/index.html`, and putting some new code inside the `main.py` file, but neither worked because the templates weren't automatically reloaded (and the code had even lower chances of reloading if the templates didn't).
+I then tried just using a command to put the flag text into `templates/index.html`, and to put some new code inside the `main.py` file, but neither worked because the templates weren't automatically reloaded (and the code had even lower chances of reloading if the templates didn't).
 
 My next instinct was to do some sort of data exfiltration over the network (like sending a HTTP request to some remote server). But someone foresaw this, and outbound connections are disabled on the machine.
 
