@@ -196,6 +196,8 @@ You are currently at position (6, 10), standing on block id 76.
 >>>
 ```
 So then I just kept going on, to `(7,10)`, `(8,10)`, and so on just by using `mr` to move right (i.e. up if we're talking about the addresses) and `j1` to build towers up to `y=10`, and the program continued to leak the bytes to me.
+
 I then just continued moving to the right and building towers of height 10, and I eventually got the entire flag: `LITCTF{w0w_th4t_w4s_fun_w4snt_1t}`.
+
 One major anonyance is that gravity caused me to fall to the ground when I was moving to the next x-value. This is why I recommend this challenge as a good team-building exercise in making dirt towers in a 100% legit CodeTiger approved Minecraft bootleg. I had my other teammate do the odd x-values and I did the even x-values, and it would be a huge performance improvement with 3 people.
 
