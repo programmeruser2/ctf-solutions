@@ -1,6 +1,6 @@
 # crypto/polypoint
 If we look at the Python code for encryption, it appears to be using the flag + 10 other random values as the coefficients of the polynomial, and then applying that polynomial to 10 values of `x`:
-```
+```python3
 from secrets import SystemRandom
 
 gen = SystemRandom()
@@ -87,7 +87,7 @@ if s.check() == sat:
 
 print('done solving')
 ```
-Then I just had to run it and get the value of a11 (the plaintext):
+Then I just had to run it and get the value of `a11` (the plaintext):
 ```
 sat
 [a7 = 935980668626,
