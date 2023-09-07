@@ -50,6 +50,7 @@ def decrypt_flag(sol):
     flag = bytearray([char ^ key[i] for i, char in enumerate(ENCRYPTED_FLAG)]).decode()
 
     print(flag)
+    # picoCTF{b1g_numb3rs_afc4ce7f}
 
 if __name__ == "__main__":
     sol = m_func(ITERS)
