@@ -10,9 +10,10 @@ g = int(match.group(2))
 print(f'{p = }')
 print(f'{g = }')
 
-a = 3
-A = pow(g,a,p)
-print(f'{a = }')
+
+r = s.get('https://diffie-hellman.crypto.w3challs.com/dhkey.php')
+
+A = int(re.search(r"A = (\d+)", r.text).group(1))
 print(f'{A = }')
 
 r = s.post('https://diffie-hellman.crypto.w3challs.com/dhkey.php?type=alice_send_key', data={
@@ -24,9 +25,11 @@ Message from Alice to Bob on 2023/09/03 22:19:07
 
 A = {A}"'''
 })
-B = int(re.search(r"B = (\d+)", r.text).group(1))
+b = 2
+B = pow(g,2,p)
 
-secret = pow(B,a,p)
+secret = pow(A,b,p)
+print(f'{b = }')
 print(f'{B = }')
 print(f'{secret = }')
 
