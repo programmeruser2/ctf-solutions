@@ -205,6 +205,8 @@ But if we just try to overflow the buffer, a strange assertion fails in the midd
 
 However, there's no `win` function, and it probably isn't realistic to piggyback off an existing Rust function due to how complicated they are. So the most realistic option here is to just do a standard ROP to a syscall, and get a shell with that.
 
+Another possible problem is the PIE restrictions on the binary, but since we have a leak of a BSS address, we can use that to calculate the PIE base and bypass the restrictions.
+
 If we run `ROPgadget --binary nettools`, we can indeed find a lot of gadgets (in fact, there are 25780 in total). 
 We need to control `rax`, `rdi`, `rsi`, and `rdx`. Let's see how many pop gadgets we can find:
 
