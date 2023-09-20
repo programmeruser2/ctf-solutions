@@ -5,6 +5,7 @@
 
 > 'Greed is good.'
 > * Gordon Gekko
+> 
 > Come and Break My Vault
 
 In this challenge, we're given 3 files: `ansible.cfg`, `main.yml`, and `runme.yml`.
