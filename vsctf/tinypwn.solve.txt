@@ -1,0 +1,21 @@
+$ dd if=tinypwn of=tinypwn.bin bs=1 skip=52
+17+0 records in
+17+0 records out
+17 bytes copied, 0.0222751 s, 0.8 kB/s
+$ objdump -Dz -Mintel -m i386 -b binary --adjust-vma=0x00010000 tinypwn.bin
+
+tinypwn.bin:     file format binary
+
+
+Disassembly of section .data:
+
+00010000 <.data>:
+   10000:       6a 03                   push   0x3
+   10002:       58                      pop    eax
+   10003:       bb 00 00 00 00          mov    ebx,0x0
+   10008:       89 e1                   mov    ecx,esp
+   1000a:       6a 0d                   push   0xd
+   1000c:       5a                      pop    edx
+   1000d:       cd 80                   int    0x80
+   1000f:       ff e4                   jmp    esp
+
