@@ -1,4 +1,6 @@
 */__pycache__/*
 __pycache__/
 libseccomp.so.2
+node_modules
+
 

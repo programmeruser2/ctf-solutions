@@ -70,18 +70,18 @@ def decrypt(key, ciphertext):
 
     statem = bytes2matrix(ciphertext)
     
-    add_round_key(statem, round_keys[0])
-    inv_shift_rows(statem)
-    sub_bytes(statem, sbox=inv_s_box)
+    add_round_key(statem, round_keys[N_ROUNDS])
 
     # Initial add round key step
     for i in range(N_ROUNDS - 1, 0, -1):
-        add_round_key(statem, round_keys[i-1])
-        inv_mix_columns(statem)
         inv_shift_rows(statem)
         sub_bytes(statem, sbox=inv_s_box)
+        add_round_key(statem, round_keys[i])
+        inv_mix_columns(statem)
 
     # Run final round (skips the InvMixColumns step)
+    inv_shift_rows(statem)
+    sub_bytes(statem, sbox=inv_s_box)
     add_round_key(statem, round_keys[0])
 
     # Convert state matrix to plaintext
