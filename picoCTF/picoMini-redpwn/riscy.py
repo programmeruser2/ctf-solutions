@@ -30,3 +30,4 @@ while len(flag) < length:
     assert found 
     if flag[-1] == '}': break 
 print('final flag:', flag)
+# picoCTF{4ny0n3_g0t_r1scv_h4rdw4r3?_LGUfwl8xyMUlpgvz}
