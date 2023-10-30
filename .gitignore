@@ -3,5 +3,5 @@ __pycache__/
 libseccomp.so.2
 node_modules
 picoCTF/2021/horsepower
-
+*.swp
 
