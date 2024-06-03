@@ -1,0 +1,2 @@
+picoCTF{test_flag}
+

